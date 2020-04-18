@@ -51,11 +51,11 @@ jobs:
           project: ${{ steps.extract.outputs.name }}
           #if we change the column name, this automation needs to be updated
           column: 'Approved for Merging'
-          repo-token: ${{ secrets.PR_TOKEN }}
+          repo-token: ${{ secrets.TEST_DO_NOT_EXIST }}
       - name: perform automation for unlabel
         if: env.LABEL_NAME == 'Passed' && steps.extract.outputs.name != '' &&  github.event.action == 'unlabeled'
         uses: alex-page/github-project-automation-plus@v0.2.2
         with:
           project: ${{ steps.extract.outputs.name }}
           column: 'In Review'
-          repo-token: ${{ secrets.PR_TOKEN }}
+          repo-token: ${{ secrets.TEST_DO_NOT_EXIST }}
