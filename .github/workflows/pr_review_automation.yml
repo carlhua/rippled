@@ -10,6 +10,6 @@ jobs:
       - name: retrieve state
         run: |
           jq '.' $GITHUB_EVENT_PATH
-          ACTION1=$(jq --raw-output ".state" $GITHUB_EVENT_PATH)
+          ACTION1=$(jq --raw-output "review.state" $GITHUB_EVENT_PATH)
           echo "Label in action is $ACTION1"
           echo ::set-env name=ACTION::$ACTION
