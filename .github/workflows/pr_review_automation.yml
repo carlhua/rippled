@@ -1,0 +1,15 @@
+name: PR automation
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: retrieve label
+        run: |
+          jq '.' $GITHUB_EVENT_PATH
+          ACTION1=$(jq --raw-output ".state" $GITHUB_EVENT_PATH)
+          echo "Label in action is $ACTION1"
+          echo ::set-env name=ACTION::$ACTION
