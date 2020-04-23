@@ -1,4 +1,4 @@
-name: PR automation
+name: PR review automation
 on:
   pull_request_review:
     types: [submitted]
@@ -7,7 +7,7 @@ jobs:
   job:
     runs-on: ubuntu-latest
     steps: 
-      - name: retrieve label
+      - name: retrieve state
         run: |
           jq '.' $GITHUB_EVENT_PATH
           ACTION1=$(jq --raw-output ".state" $GITHUB_EVENT_PATH)
